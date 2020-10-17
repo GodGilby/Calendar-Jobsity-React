@@ -1,0 +1,16 @@
+.container{
+    height: 40px;
+    display: flex;
+    background-color: #2A72B8;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.box{
+    flex: 1;
+    display: flex;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    justify-content: center;
+}
