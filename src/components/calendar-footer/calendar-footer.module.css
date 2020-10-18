@@ -1,0 +1,31 @@
+.container{
+    height: 40px;
+    display: flex;
+    background-color: #2A72B8;
+    align-items: center;
+    padding: 0px 10px;
+}
+
+.box{
+    border-radius: 2px;
+    background:white;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    padding: 10px 20px;
+    justify-content: center;
+}
+
+.box:hover{
+
+}
+
+.boxContainer{
+    display: flex;
+    justify-content: space-around;
+    flex: 1;
+    align-items: center;
+    color: black;
+}

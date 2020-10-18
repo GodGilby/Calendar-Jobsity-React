@@ -3,8 +3,6 @@ import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import ModalUI from "./modalUI.component";
 import { shallow } from "enzyme";
-import { act } from "react-dom/test-utils";
-import { render, fireEvent } from "@testing-library/react";
 
 Enzyme.configure({ adapter: new Adapter() });
 

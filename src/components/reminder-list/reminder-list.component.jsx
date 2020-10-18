@@ -1,19 +1,19 @@
 import React, { useState } from "react";
-import styles from "./calendar-list.module.css";
+import styles from "./reminder-list.module.css";
 
 //Components
 import ReminderModal from "../reminder-modal/modal.component";
 
-const CalendarList = ({ reminders, day }) => {
-  console.log(reminders, day);
+const CalendarList = ({ reminders, day, month }) => {
+  console.log(day,month);
 
   const [open, setOpen] = useState(false);
-  const [modalData,setModalData] = useState({});
+  const [modalData, setModalData] = useState({});
 
-  const openModal = (reminder) => {
+  const openModal = reminder => {
     setModalData(reminder);
     setOpen(true);
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -21,12 +21,14 @@ const CalendarList = ({ reminders, day }) => {
         ? reminders
             .filter(
               reminderExist =>
-                reminderExist.date.substring(8, reminderExist.length) == day
+                reminderExist.date.substring(8, reminderExist.length) == day &&
+                reminderExist.date.substring(5, 7) == month
             )
             .map(reminder => {
-              console.log(reminder);
+              console.log("El reminder es: ", reminder);
               return (
                 <div
+                  key={reminder.id}
                   className={styles.boxContainer}
                   onClick={() => openModal(reminder)}
                 >
@@ -37,7 +39,9 @@ const CalendarList = ({ reminders, day }) => {
                         background: reminder.color ? reminder.color : "white"
                       }}
                     ></div>
-                    <div className={styles.title}>{reminder.title}</div>
+                    <div className={styles.title}>
+                      {reminder.title.substring(0, 5) + " ..."}
+                    </div>
                   </div>
                   <div className={styles.box2}>
                     <div>{reminder.time}</div>

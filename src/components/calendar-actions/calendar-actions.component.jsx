@@ -10,7 +10,6 @@ import ReminderModal from "../reminder-modal/modal.component";
 
 const CalendarActions = ({day,isWeekend,deleteAllReminders}) => {
 
-  // const { day, isWeekend } = props;
   const [open, setOpen] = useState(false);
 
   const onDelete = () =>{

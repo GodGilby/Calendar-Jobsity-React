@@ -8,11 +8,11 @@ import { store } from "./redux/store"
 import 'semantic-ui-css/semantic.min.css'
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

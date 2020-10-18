@@ -25,10 +25,10 @@ const ModalUI = ({
   const getId = randomGeneratorID();
 
   const [title, setTitle] = useState(data? data.title: "");
-  const [date, setDate] = useState(data? data.date: null);
-  const [time, setTime] = useState(data? data.time: null);
+  const [date, setDate] = useState(data? data.date: new Date().toLocaleDateString());
+  const [time, setTime] = useState(data? data.time: new Date().toLocaleTimeString());
   const [color, setColor] = useState(data? data.color: "#5545a3");
-  const [city, setCity] = useState(data? data.city: null);
+  const [city, setCity] = useState(data? data.city: '');
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
   const [count, setCount] = useState(0);
   const [id] = useState(data? data.id: getId);

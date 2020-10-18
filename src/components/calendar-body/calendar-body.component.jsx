@@ -10,7 +10,7 @@ import {setDays} from "../../redux/actions/calendarAction"
 
 //Components
 import CalendarActions from "../calendar-actions/calendar-actions.component";
-import CalendarList from "../calendar-list/calendar-list.component";
+import CalendarList from "../reminder-list/reminder-list.component";
 
 
 const CalendarBody = ({Calendar,Reminder}) => {
@@ -20,14 +20,15 @@ const CalendarBody = ({Calendar,Reminder}) => {
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
-        {Calendar.map(({disabled,isWeekend,day},index)=>{
+        {Calendar.map(({disabled,isWeekend,day,month},index)=>{
           console.log(day);
           return(
             <div 
+              key={index}
               style={{backgroundColor: disabled? "#F2F2F2": "white"}} 
               className={styles.box}>
-                <CalendarActions key={index} isWeekend={isWeekend} day={day}></CalendarActions>
-                <CalendarList reminders={Reminder? Reminder: []} day={day}></CalendarList>
+                <CalendarActions  isWeekend={isWeekend} day={day}></CalendarActions>
+                <CalendarList reminders={Reminder? Reminder: []} day={day} month={month}></CalendarList>
               </div>
           )
         })}
@@ -42,7 +43,7 @@ const mapStateToProps = ({ Calendar,Reminder }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setDays: dispatch(setDays(CALENDAR_DAYS))
+  setDays: dispatch(setDays(CALENDAR_DAYS[1]))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(CalendarBody);
