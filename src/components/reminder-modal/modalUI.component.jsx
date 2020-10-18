@@ -3,16 +3,13 @@ import { Modal } from "semantic-ui-react";
 import styles from "./modal.module.css";
 import {randomGeneratorID} from "../../utils/utils";
 
-//Redux
-import { connect } from "react-redux";
-import { setReminder, setWeather, updateReminder,removeReminder} from "../../redux/actions/reminderAction";
 
 //Components
 import DropdownCity from "../dropdown-city/dropdown-city.component";
 import WeatherInformation from "../weather-information/weather-information.component";
 import { SketchPicker } from "react-color";
 
-const ReminderModal = ({
+const ModalUI = ({
   isOpen,
   setOpen,
   setReminder,
@@ -34,7 +31,7 @@ const ReminderModal = ({
   const [city, setCity] = useState(data? data.city: null);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
   const [count, setCount] = useState(0);
-  const [id] = useState(data? data.id: getId)
+  const [id] = useState(data? data.id: getId);
 
   console.log(weather);
 
@@ -102,6 +99,7 @@ const ReminderModal = ({
                 </div>
                 <input
                   name="title"
+                  id="title-input"
                   onChange={e => setTitle(e.target.value)}
                   value={title}
                   onKeyPress={() => {
@@ -130,6 +128,7 @@ const ReminderModal = ({
                 <input
                   type="date"
                   name="date"
+                  id="date-input"
                   value={date}
                   onChange={e => setDate(e.target.value)}
                   className={styles.input}
@@ -141,6 +140,7 @@ const ReminderModal = ({
                 <input
                   type="time"
                   name={time}
+                  id="time-input"
                   onChange={e => {
                     setTime(e.target.value);
                   }}
@@ -177,7 +177,7 @@ const ReminderModal = ({
                 )}
               </div>
               <div className={styles.boxButton}>
-                <button className={styles.buttonSuccess} onClick={onSubmit}>
+                <button className={styles.buttonSuccess} type="submit" onClick={onSubmit} id="submitBtn">
                   {edit? "Update": "Create"}
                 </button>
               </div>
@@ -192,15 +192,4 @@ const ReminderModal = ({
   );
 };
 
-const mapStateToProps = ({ Reminder }) => ({
-  weather: Reminder.weather
-});
-
-const mapDispatchToProps = dispatch => ({
-  setReminder: reminder => dispatch(setReminder(reminder)),
-  setWeather: reminder => dispatch(setWeather(reminder.city)),
-  updateReminder: reminder => dispatch(updateReminder(reminder)),
-  removeReminder: reminder => dispatch(removeReminder(reminder.id))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ReminderModal);
+export default ModalUI;

@@ -13,7 +13,7 @@ const DropdownCity = ({getCity,defaultValue}) => {
   }
 
   return (
-    <select className={styles.container} value={defaultValue} onChange={(e)=>getSelectedValue(e)}>
+    <select id="city-input" className={styles.container} value={defaultValue} onChange={(e)=>getSelectedValue(e)}>
       {CITIES.map(city => {
         return <option key={city.id}>{city.name}</option>;
       })}

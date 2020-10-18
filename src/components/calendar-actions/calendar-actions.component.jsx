@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import {deleteAllReminders} from "../../redux/actions/reminderAction"
 
 //Components
-import ReminderModal from "../modal/modal.component";
+import ReminderModal from "../reminder-modal/modal.component";
 
 const CalendarActions = ({day,isWeekend,deleteAllReminders}) => {
 

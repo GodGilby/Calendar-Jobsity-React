@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./calendar-list.module.css";
 
 //Components
-import ReminderModal from "../modal/modal.component";
+import ReminderModal from "../reminder-modal/modal.component";
 
 const CalendarList = ({ reminders, day }) => {
   console.log(reminders, day);
