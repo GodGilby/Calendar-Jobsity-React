@@ -26,6 +26,7 @@ const CalendarActions = props => {
           isOpen={open}
           setOpen={() => setOpen(false)}
           day={day}
+          edit={false}
         ></ReminderModal>
       ) : null}
     </>

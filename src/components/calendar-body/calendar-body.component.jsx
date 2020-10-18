@@ -26,7 +26,7 @@ const CalendarBody = ({Calendar,Reminder}) => {
               style={{backgroundColor: disabled? "#F2F2F2": "white"}} 
               className={styles.box}>
                 <CalendarActions key={index} isWeekend={isWeekend} day={day}></CalendarActions>
-                <CalendarList reminders={Reminder} day={day}></CalendarList>
+                <CalendarList reminders={Reminder? Reminder: []} day={day}></CalendarList>
               </div>
           )
         })}

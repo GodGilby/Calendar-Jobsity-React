@@ -6,5 +6,6 @@ export const CalendarActionType = {
 export const ReminderActionType = {
     SET_REMINDER: "SET_REMINDER",
     GET_REMINDER: "GET_REMINDER",
-    SET_WEATHER: "SET_WEATHER"
+    SET_WEATHER: "SET_WEATHER",
+    UPDATE_REMINDER: "UPDATE_REMINDER"    
 }
