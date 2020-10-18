@@ -1,16 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./calendar-actions.module.css";
 
-const CalendarActions = ( props ) => {
+//Redux
+import { connect } from "react-redux";
 
-  const {day, isWeekend} = props;
+//Components
+import ReminderModal from "../modal/modal.component";
+
+const CalendarActions = props => {
+  const { day, isWeekend } = props;
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className={styles.container}>
-      <div style={{color: isWeekend ? "blue": "black"}}>{day}</div>
-      <button>Actions</button>
-    </div>
+    <>
+      <div className={styles.container}>
+        <div style={{ color: isWeekend ? "blue" : "black" }}>{day}</div>
+        <div>
+          <button onClick={() => setOpen(true)}>Add</button>
+          <button>Delete</button>
+        </div>
+      </div>
+
+      {open ? (
+        <ReminderModal
+          isOpen={open}
+          setOpen={() => setOpen(false)}
+          day={day}
+        ></ReminderModal>
+      ) : null}
+    </>
   );
 };
 
-export default CalendarActions;
+// const mapDispatchToProps = () => {};
+
+export default connect(null, null)(CalendarActions);

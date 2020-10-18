@@ -13,19 +13,20 @@ import CalendarActions from "../calendar-actions/calendar-actions.component";
 import CalendarList from "../calendar-list/calendar-list.component";
 
 
-const CalendarBody = ({Calendar}) => {
+const CalendarBody = ({Calendar,Reminder}) => {
 
-  console.log(Calendar,CALENDAR_DAYS);
+  console.log(Reminder);
+
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
-        {Calendar.map(({disabled,...props})=>{
+        {Calendar.map(({disabled,isWeekend,day},index)=>{
           return(
             <div 
               style={{backgroundColor: disabled? "#F2F2F2": "white"}} 
               className={styles.box}>
-                <CalendarActions {...props}></CalendarActions>
-                <CalendarList></CalendarList>
+                <CalendarActions key={index} isWeekend={isWeekend} day={day}></CalendarActions>
+                <CalendarList reminders={Reminder} day={day}></CalendarList>
               </div>
           )
         })}
@@ -34,8 +35,9 @@ const CalendarBody = ({Calendar}) => {
   );
 };
 
-const mapStateToProps = ({ Calendar }) => ({
-  Calendar: Calendar.days
+const mapStateToProps = ({ Calendar,Reminder }) => ({
+  Calendar: Calendar.days,
+  Reminder: Reminder.reminders
 });
 
 const mapDispatchToProps = dispatch => ({

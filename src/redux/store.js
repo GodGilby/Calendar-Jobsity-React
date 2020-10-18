@@ -1,5 +1,5 @@
 import {createStore,applyMiddleware,combineReducers} from 'redux';
-// import {composeWithDevTools} from 'redux-devtools-extension';
+import logger from 'redux-logger';
 
 //Reducers
 import CalendarReducer from './reducers/calendarReducer';
@@ -10,6 +10,9 @@ const rootReducer = combineReducers({
     Reminder: ReminderReducer
 })
 
-export const store = createStore(rootReducer);
+const middlewares = [logger];
+
+
+export const store = createStore(rootReducer,applyMiddleware(...middlewares));
 
 export default store;

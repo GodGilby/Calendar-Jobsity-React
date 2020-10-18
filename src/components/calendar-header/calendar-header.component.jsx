@@ -7,9 +7,9 @@ import {DATES} from "../../data/dates";
 const CalendarHeader = () => {
     return (
         <div className={styles.container}>
-            {DATES.map((date)=>{
+            {DATES.map((date,index)=>{
                 return (
-                    <div className={styles.box}>{date}</div>
+                    <div key={index} className={styles.box}>{date}</div>
                 )
             })}
         </div>

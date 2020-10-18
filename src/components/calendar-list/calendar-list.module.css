@@ -1,7 +1,42 @@
 .container{
-    display: flex;
-    flex: 1;
+    /* display: flex; */
+    /* flex: 1; */
     flex-direction: column;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 100%;
+    padding: 0px 5px;
+}
+
+.boxContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px 5px;
+    margin: 5px 0px;
+    overflow-y: hidden;
+}
+
+.box1{
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.box2{
+    width: 50%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.circleBox{
+    border-radius: 50px;
+    border: 1px solid black;
+    width: 12px;
+    height: 12px;
+}
+
+.title{
+    padding-left: 5px;
 }
