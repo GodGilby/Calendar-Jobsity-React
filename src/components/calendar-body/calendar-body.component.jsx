@@ -15,12 +15,13 @@ import CalendarList from "../calendar-list/calendar-list.component";
 
 const CalendarBody = ({Calendar,Reminder}) => {
 
-  console.log(Reminder);
+  console.log(Reminder,Calendar);
 
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
         {Calendar.map(({disabled,isWeekend,day},index)=>{
+          console.log(day);
           return(
             <div 
               style={{backgroundColor: disabled? "#F2F2F2": "white"}} 

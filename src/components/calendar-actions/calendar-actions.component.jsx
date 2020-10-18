@@ -3,13 +3,22 @@ import styles from "./calendar-actions.module.css";
 
 //Redux
 import { connect } from "react-redux";
+import {deleteAllReminders} from "../../redux/actions/reminderAction"
 
 //Components
 import ReminderModal from "../modal/modal.component";
 
-const CalendarActions = props => {
-  const { day, isWeekend } = props;
+const CalendarActions = ({day,isWeekend,deleteAllReminders}) => {
+
+  // const { day, isWeekend } = props;
   const [open, setOpen] = useState(false);
+
+  const onDelete = () =>{
+    console.log(day);
+    deleteAllReminders({
+      day: day
+    });
+  }
 
   return (
     <>
@@ -17,7 +26,7 @@ const CalendarActions = props => {
         <div style={{ color: isWeekend ? "blue" : "black" }}>{day}</div>
         <div>
           <button onClick={() => setOpen(true)}>Add</button>
-          <button>Delete</button>
+          <button onClick={onDelete}>Delete</button>
         </div>
       </div>
 
@@ -33,6 +42,8 @@ const CalendarActions = props => {
   );
 };
 
-// const mapDispatchToProps = () => {};
+const mapDispatchToProps = (dispatch) => ({
+  deleteAllReminders: day => dispatch(deleteAllReminders(day))
+});
 
-export default connect(null, null)(CalendarActions);
+export default connect(null, mapDispatchToProps)(CalendarActions);

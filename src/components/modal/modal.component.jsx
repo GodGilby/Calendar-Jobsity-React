@@ -5,7 +5,7 @@ import {randomGeneratorID} from "../../utils/utils";
 
 //Redux
 import { connect } from "react-redux";
-import { setReminder, setWeather, updateReminder} from "../../redux/actions/reminderAction";
+import { setReminder, setWeather, updateReminder,removeReminder} from "../../redux/actions/reminderAction";
 
 //Components
 import DropdownCity from "../dropdown-city/dropdown-city.component";
@@ -18,6 +18,7 @@ const ReminderModal = ({
   setReminder,
   setWeather,
   updateReminder,
+  removeReminder,
   weather,
   data,
   edit
@@ -30,7 +31,7 @@ const ReminderModal = ({
   const [date, setDate] = useState(data? data.date: null);
   const [time, setTime] = useState(data? data.time: null);
   const [color, setColor] = useState(data? data.color: "#5545a3");
-  const [city, setCity] = useState(data? data.city: "");
+  const [city, setCity] = useState(data? data.city: null);
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
   const [count, setCount] = useState(0);
   const [id] = useState(data? data.id: getId)
@@ -58,6 +59,15 @@ const ReminderModal = ({
     }
   };
 
+  const onDelete = (e) =>{
+    e.preventDefault()
+    console.log(id);
+    setOpen(false);
+    removeReminder({
+      id: id
+    });
+  }
+ 
   const fetchingWeather = data => {
     console.log(data);
     setCity(data);
@@ -73,7 +83,12 @@ const ReminderModal = ({
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
     >
-      <Modal.Header>Reminder</Modal.Header>
+      <Modal.Header>
+        <div className={styles.header}>
+          <div>Reminder</div>
+          {edit? <button className={styles.buttonDelete} onClick={onDelete}>Delete</button>: null}
+        </div>
+      </Modal.Header>
       <Modal.Content>
         <Modal.Description>
           <form style={{display: "flex"}}>
@@ -138,7 +153,7 @@ const ReminderModal = ({
                 <div className={styles.title}>City</div>
                 <DropdownCity
                   getCity={data => fetchingWeather(data)}
-                  data={city}
+                  defaultValue={city}
                 ></DropdownCity>
               </div>
               <div className={styles.container}>
@@ -162,7 +177,7 @@ const ReminderModal = ({
                 )}
               </div>
               <div className={styles.boxButton}>
-                <button className={styles.button} onClick={onSubmit}>
+                <button className={styles.buttonSuccess} onClick={onSubmit}>
                   {edit? "Update": "Create"}
                 </button>
               </div>
@@ -184,7 +199,8 @@ const mapStateToProps = ({ Reminder }) => ({
 const mapDispatchToProps = dispatch => ({
   setReminder: reminder => dispatch(setReminder(reminder)),
   setWeather: reminder => dispatch(setWeather(reminder.city)),
-  updateReminder: reminder => dispatch(updateReminder(reminder))
+  updateReminder: reminder => dispatch(updateReminder(reminder)),
+  removeReminder: reminder => dispatch(removeReminder(reminder.id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReminderModal);

@@ -4,10 +4,8 @@ import styles from "./dropdown-city.module.css";
 //DATA
 import { CITIES } from "../../data/cities";
 
-const DropdownCity = ({getCity,data}) => {
-  console.log(data);
-
-  const selectedCity = CITIES.filter((city) => city.name == data);
+const DropdownCity = ({getCity,defaultValue}) => {
+  console.log(defaultValue);
 
   const getSelectedValue = (e) =>{
     console.log(e.target.value);
@@ -15,9 +13,9 @@ const DropdownCity = ({getCity,data}) => {
   }
 
   return (
-    <select className={styles.container} onChange={(e)=>getSelectedValue(e)}>
+    <select className={styles.container} value={defaultValue} onChange={(e)=>getSelectedValue(e)}>
       {CITIES.map(city => {
-        return <option key={city.id} value={data || city.name} selected>{city.name}</option>;
+        return <option key={city.id}>{city.name}</option>;
       })}
     </select>
   );

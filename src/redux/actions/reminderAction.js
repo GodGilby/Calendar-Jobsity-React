@@ -44,3 +44,13 @@ export const updateReminder = (data) => ({
     type: ReminderActionType.UPDATE_REMINDER,
     payload: data
 })
+
+export const removeReminder = (id) => ({
+    type: ReminderActionType.DELETE_REMINDER,
+    payload: id
+})
+
+export const deleteAllReminders = (data) => ({
+    type: ReminderActionType.DELETE_ALL_REMINDERS,
+    payload: data
+})

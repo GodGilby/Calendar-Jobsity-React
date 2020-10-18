@@ -7,6 +7,7 @@ const initialState = {
 
 const reminderReducer = (state = initialState, action) => {
   console.log(action.payload,state.reminders);
+ 
   switch (action.type) {
     case ReminderActionType.SET_REMINDER:
       return {
@@ -24,11 +25,27 @@ const reminderReducer = (state = initialState, action) => {
       }
     case ReminderActionType.UPDATE_REMINDER:
 
-        let specificReminder = state.reminders.filter((reminder) => reminder.id !== action.payload.id)
-        console.log(specificReminder);
+        let fReminded = state.reminders.filter((reminder) => reminder.id !== action.payload.id)
+        
         return {
           ...state,
-          reminders: [...specificReminder,action.payload]
+          reminders: [...fReminded,action.payload]
+        }
+    case ReminderActionType.DELETE_REMINDER:
+
+        let findReminder = state.reminders.filter((reminder) => reminder.id !== action.payload)
+
+        return{
+           ...state,
+           reminders: findReminder
+        }
+    case ReminderActionType.DELETE_ALL_REMINDERS:
+
+        let getPackOfReminders = state.reminders.filter((reminder)=> reminder.date.substring(8, reminder.date.length) != action.payload.day)
+        
+        return{
+            ...state,
+            reminders: getPackOfReminders
         }
     default:
       return state;

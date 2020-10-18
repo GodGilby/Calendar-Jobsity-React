@@ -7,7 +7,7 @@
     padding: 5px 10px;
 }
 
-.button{
+.buttonSuccess{
     padding: 10px 50px;
     background: #8f9bff;
     border: none;
@@ -17,8 +17,22 @@
     border-radius: 5px;
 }
 
-.button:hover{
+.buttonSuccess:hover{
     background: #8187ff
+}
+
+.buttonDelete{
+    padding: 10px 50px;
+    background: #ff5f52;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    border-radius: 5px;
+}
+
+.buttonDelete:hover{
+    background: "#f05545"
 }
 
 .inputDay{
@@ -39,7 +53,7 @@
   }
 
 .pickerContainer{
-    width: 70%;
+    width: 90%;
     height: 50px;
 }
 
@@ -62,5 +76,10 @@
 .titleBox{
     display: flex;
     width: 90%;
+    justify-content: space-between;
+}
+
+.header{
+    display: flex;
     justify-content: space-between;
 }
