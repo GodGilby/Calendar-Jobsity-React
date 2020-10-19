@@ -38,6 +38,10 @@ const ModalUI = ({
   const onSubmit = e => {
     e.preventDefault();
     console.log("Se esta subiendo", title, date, time, color, city);
+    if(title.length == 0){
+        alert("Please fill the title");
+        return;
+    }
     let reminder = {
       title,
       date,
@@ -58,7 +62,6 @@ const ModalUI = ({
 
   const onDelete = (e) =>{
     e.preventDefault()
-    console.log(id);
     setOpen(false);
     removeReminder({
       id: id
@@ -66,7 +69,6 @@ const ModalUI = ({
   }
  
   const fetchingWeather = data => {
-    console.log(data);
     setCity(data);
     setWeather({
       city: data

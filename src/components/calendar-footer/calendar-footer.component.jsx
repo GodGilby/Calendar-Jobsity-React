@@ -1,40 +1,43 @@
-import React from 'react';
-import styles from "./calendar-footer.module.css"
+import React from "react";
+import styles from "./calendar-footer.module.css";
 
 //Redux
-import {connect} from "react-redux";
-import {setDays} from "../../redux/actions/calendarAction"
+import { connect } from "react-redux";
+import { setDays } from "../../redux/actions/calendarAction";
 
 //DATA
-import {CALENDAR_DAYS} from "../../data/calendar";
+import { CALENDAR_DAYS } from "../../data/calendar";
+import { getMonthName } from "../../utils/utils";
 
-const CalendarFooter = ({setMonthData}) => {
+const CalendarFooter = ({ setMonthData, Calendar }) => {
+  const setMonth = position => {
+    const monthNumbers = Object.values(CALENDAR_DAYS);
+    setMonthData(monthNumbers[position - 1]);
+  };
 
-    const setMonth = (position) =>{
-        console.log(position);
-        const x = Object.values(CALENDAR_DAYS);
-        console.log(x[position -1]);
+  return (
+    <div className={styles.container}>
+      <div className={styles.monthName}>{getMonthName(Calendar[10].month)}</div>
+      <div className={styles.boxContainer}>
+        {Object.keys(CALENDAR_DAYS).map((monthNumber, index) => {
+          console.log(monthNumber);
+          return (
+              <div className={styles.box} onClick={() => setMonth(monthNumber)}>
+                {monthNumber}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
-        setMonthData(x[position - 1]);
-    }
-
-    return (
-        <div className={styles.container}>
-            {Object.keys(CALENDAR_DAYS).map((c,index) =>{
-                console.log(c[1])
-                return(
-                    <div className={styles.boxContainer}>
-                        <div className={styles.box} onClick={() =>setMonth(c)}>{c}</div>
-                    </div>
-                )
-            })}
-        </div>
-    )
-}
+const mapStateToProps = ({ Calendar }) => ({
+  Calendar: Calendar.days
+});
 
 const mapDispatchToProps = dispatch => ({
-    setMonthData: days => dispatch(setDays(days))
-  })
+  setMonthData: days => dispatch(setDays(days))
+});
 
-
-export default connect(null,mapDispatchToProps)(CalendarFooter);
+export default connect(mapStateToProps, mapDispatchToProps)(CalendarFooter);

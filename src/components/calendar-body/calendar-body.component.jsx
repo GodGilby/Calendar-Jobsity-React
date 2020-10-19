@@ -43,7 +43,7 @@ const mapStateToProps = ({ Calendar,Reminder }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setDays: dispatch(setDays(CALENDAR_DAYS[1]))
+  setDays: dispatch(setDays(CALENDAR_DAYS[10]))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(CalendarBody);

@@ -40,12 +40,12 @@ const CalendarList = ({ reminders, day, month }) => {
                       }}
                     ></div>
                     <div className={styles.title}>
-                      {reminder.title.substring(0, 5) + " ..."}
+                      {reminder.title? reminder.title.substring(0, 5) + " ...": "N/A"}
                     </div>
                   </div>
                   <div className={styles.box2}>
-                    <div>{reminder.time}</div>
-                    <div>{reminder.weather.status}</div>
+                    <div>{reminder.time? reminder.time : "N/A"}</div>
+                    <div>{reminder.weather ? reminder.weather.status: "N/A"}</div>
                   </div>
                 </div>
               );
