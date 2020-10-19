@@ -12,12 +12,10 @@ export const getReminder = () => ({
 })
 
 export const setWeather = (cityName) => (dispatch) =>{
-    console.log("Entrando a la accion",cityName);
 
     try{
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY_WEATHER}`).then((response)=>{
-            if(response.status == 200 && response.data){
-                console.log(response.data);
+            if(response.status === 200 && response.data){
                 dispatch({
                     type: ReminderActionType.SET_WEATHER,
                     payload: {

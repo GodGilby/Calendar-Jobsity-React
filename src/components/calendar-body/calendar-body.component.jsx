@@ -15,13 +15,11 @@ import CalendarList from "../reminder-list/reminder-list.component";
 
 const CalendarBody = ({Calendar,Reminder}) => {
 
-  console.log(Reminder,Calendar);
 
   return (
     <div className={styles.container}>
       <div className={styles.boxContainer}>
         {Calendar.map(({disabled,isWeekend,day,month},index)=>{
-          console.log(day);
           return(
             <div 
               key={index}

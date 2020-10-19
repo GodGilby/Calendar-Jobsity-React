@@ -13,7 +13,6 @@ const CalendarActions = ({day,isWeekend,deleteAllReminders}) => {
   const [open, setOpen] = useState(false);
 
   const onDelete = () =>{
-    console.log(day);
     deleteAllReminders({
       day: day
     });

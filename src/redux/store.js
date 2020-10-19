@@ -1,5 +1,4 @@
 import {createStore,applyMiddleware,combineReducers} from 'redux';
-import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
     Reminder: ReminderReducer
 })
 
-const middlewares = [logger];
 
 
 export const store = createStore(rootReducer,applyMiddleware(thunk));

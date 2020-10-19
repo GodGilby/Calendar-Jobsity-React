@@ -20,7 +20,6 @@ const ModalUI = ({
   data,
   edit
 }) => {
-  console.log("Esta abierto? :", isOpen);
 
   const getId = randomGeneratorID();
 
@@ -33,12 +32,10 @@ const ModalUI = ({
   const [count, setCount] = useState(0);
   const [id] = useState(data? data.id: getId);
 
-  console.log(weather);
 
   const onSubmit = e => {
     e.preventDefault();
-    console.log("Se esta subiendo", title, date, time, color, city);
-    if(title.length == 0){
+    if(title.length === 0){
         alert("Please fill the title");
         return;
     }
@@ -51,7 +48,6 @@ const ModalUI = ({
       weather,
       id
     };
-    console.log(reminder);
     setOpen(false);
     if(!edit){
       setReminder(reminder);
@@ -112,9 +108,9 @@ const ModalUI = ({
                     }
                   }}
                   onKeyDown={e => {
-                    if (title.length == 0) {
+                    if (title.length === 0) {
                       setCount(0);
-                    } else if (e.keyCode == 8) {
+                    } else if (e.keyCode === 8) {
                       setCount(count - 1);
                     } else {
                       setCount(count);

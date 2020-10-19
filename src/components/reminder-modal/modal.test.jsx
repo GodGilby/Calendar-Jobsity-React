@@ -7,7 +7,6 @@ import { shallow } from "enzyme";
 Enzyme.configure({ adapter: new Adapter() });
 
 const simulateChangeOnInput = (wrapper, inputSelector, newValue) => {
-  console.log(wrapper, inputSelector, newValue);
   const input = wrapper.find(inputSelector);
   input.simulate("change", {
     target: { value: newValue }

@@ -5,7 +5,6 @@ import styles from "./reminder-list.module.css";
 import ReminderModal from "../reminder-modal/modal.component";
 
 const CalendarList = ({ reminders, day, month }) => {
-  console.log(day,month);
 
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({});
@@ -25,7 +24,6 @@ const CalendarList = ({ reminders, day, month }) => {
                 reminderExist.date.substring(5, 7) == month
             )
             .map(reminder => {
-              console.log("El reminder es: ", reminder);
               return (
                 <div
                   key={reminder.id}

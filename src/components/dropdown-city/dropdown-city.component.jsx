@@ -5,10 +5,8 @@ import styles from "./dropdown-city.module.css";
 import { CITIES } from "../../data/cities";
 
 const DropdownCity = ({getCity,defaultValue}) => {
-  console.log(defaultValue);
 
   const getSelectedValue = (e) =>{
-    console.log(e.target.value);
     getCity(e.target.value)
   }
 

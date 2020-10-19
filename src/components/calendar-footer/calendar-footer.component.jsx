@@ -20,9 +20,8 @@ const CalendarFooter = ({ setMonthData, Calendar }) => {
       <div className={styles.monthName}>{getMonthName(Calendar[10].month)}</div>
       <div className={styles.boxContainer}>
         {Object.keys(CALENDAR_DAYS).map((monthNumber, index) => {
-          console.log(monthNumber);
           return (
-              <div className={styles.box} onClick={() => setMonth(monthNumber)}>
+              <div key={index} className={styles.box} onClick={() => setMonth(monthNumber)}>
                 {monthNumber}
             </div>
           );

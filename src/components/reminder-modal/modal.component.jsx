@@ -14,7 +14,6 @@ import ModalUI from "./modalUI.component";
 
 export const ReminderModal = (props) => {
 
-  console.log(props);
   return(
     <ModalUI {...props} ></ModalUI>
   )
