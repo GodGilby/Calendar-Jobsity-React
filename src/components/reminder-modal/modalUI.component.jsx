@@ -191,7 +191,7 @@ const ModalUI = ({
               </div>
             </div>
             <div style={{ flex: 1 }}>
-              {weather ? (
+              {weather && city.length != 0 ? (
                 <WeatherInformation {...weather}></WeatherInformation>
               ) : null}
             </div>
