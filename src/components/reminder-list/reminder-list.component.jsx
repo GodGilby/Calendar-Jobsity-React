@@ -14,16 +14,6 @@ const CalendarList = ({ reminders, day, month }) => {
     setOpen(true);
   };
 
-  console.log(reminders
-            .filter(
-              reminderExist =>
-                reminderExist.date.substring(8, reminderExist.length) == day &&
-                reminderExist.date.substring(5, 7) == month
-            ).sort((a,b)=>{
-              console.log(a,b);
-            }));
-
-
   return (
     <div className={styles.container}>
       {reminders.length != 0
@@ -32,9 +22,7 @@ const CalendarList = ({ reminders, day, month }) => {
               reminderExist =>
                 reminderExist.date.substring(8, reminderExist.length) == day &&
                 reminderExist.date.substring(5, 7) == month
-            ).sort((a,b)=>{
-              console.log(a,b);
-            })
+            )
             .map(reminder => {
               return (
                 <div
