@@ -1,13 +1,42 @@
-.imgActions{
-    background-image: url("../../assets/menu.png");
-    height: 20px;
-    width: 15px;
+.imgActions {
+  background-image: url("../../assets/menu.png");
+  height: 20px;
+  width: 15px;
 }
 
-.container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0px 5px;
-    height: 30px;
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px;
+  height: 30px;
+}
+
+.addBtn {
+  background: #4285f4;
+  border: none;
+  color: white;
+  font-size: 12px;
+  padding: 5px 15px;
+  margin: 0px 2px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  background: #3061b2;
+}
+
+.removeBtn {
+  background: #db4537;
+  border: none;
+  color: white;
+  font-size: 12px;
+  padding: 5px 15px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.removeBtn:hover{
+    background: #A6342A;
 }

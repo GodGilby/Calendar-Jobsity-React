@@ -23,8 +23,8 @@ const CalendarActions = ({day,isWeekend,deleteAllReminders}) => {
       <div className={styles.container}>
         <div style={{ color: isWeekend ? "blue" : "black" }}>{day}</div>
         <div>
-          <button onClick={() => setOpen(true)}>Add</button>
-          <button onClick={onDelete}>Delete</button>
+          <button className={styles.addBtn}onClick={() => setOpen(true)}>Add</button>
+          <button className={styles.removeBtn} onClick={onDelete}>Delete</button>
         </div>
       </div>
 

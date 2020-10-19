@@ -10,5 +10,21 @@ export const CITIES = [
     {
         id: 3,
         name: "New Jersey"
+    },
+    {
+        id: 4,
+        name: "London"
+    },
+    {
+        id: 3,
+        name: "Madrid"
+    },
+    {
+        id: 3,
+        name: "Paris"
+    },
+    {
+        id: 3,
+        name: "Berlin"
     }
 ]
