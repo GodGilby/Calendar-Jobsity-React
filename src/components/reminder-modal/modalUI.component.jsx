@@ -66,6 +66,7 @@ const ModalUI = ({
   };
 
   const fetchingWeather = data => {
+    if(!data) return;
     setCity(data);
     setWeather({
       city: data
