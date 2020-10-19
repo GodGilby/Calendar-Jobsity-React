@@ -12,9 +12,8 @@ weather forecast (ex. Rain) for the date of the calendar reminder based on the c
 - Properly handle overflow when multiple reminders appear on the same date.
 - Functionality to delete one or ALL the reminders for a specific day
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## SETUP
+## Setup
 
 - YARN OR NPM INSTALL
 - YARN START OR NPM START
