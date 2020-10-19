@@ -48,7 +48,7 @@ describe("<ModalUI />", () => {
   });
 
   it("calling the onSubmit function", async () => {
-
+    console.log(wrapper);
     simulateChangeOnInput(wrapper, "#title-input", "Testing");
     simulateChangeOnInput(wrapper, "#date-input", "10/20/2020");
     simulateChangeOnInput(wrapper, "#time-input", "10:30");

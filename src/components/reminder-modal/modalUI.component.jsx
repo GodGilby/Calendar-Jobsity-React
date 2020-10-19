@@ -36,7 +36,7 @@ const ModalUI = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    if (title.length === 0 || city.length === 0) {
+    if (!title || ((city ==  'undefined' ) || (city == ""))) {
       alert("Please fill the information");
       return;
     }
@@ -192,7 +192,7 @@ const ModalUI = ({
               </div>
             </div>
             <div style={{ flex: 1 }}>
-              {weather && city.length != 0 ? (
+              {weather && city ? (
                 <WeatherInformation {...weather}></WeatherInformation>
               ) : null}
             </div>
