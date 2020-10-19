@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Modal } from "semantic-ui-react";
 import styles from "./modal.module.css";
-import {randomGeneratorID} from "../../utils/utils";
-
+import { randomGeneratorID } from "../../utils/utils";
 
 //Components
 import DropdownCity from "../dropdown-city/dropdown-city.component";
@@ -20,24 +19,26 @@ const ModalUI = ({
   data,
   edit
 }) => {
-
   const getId = randomGeneratorID();
 
-  const [title, setTitle] = useState(data? data.title: "");
-  const [date, setDate] = useState(data? data.date: new Date().toLocaleDateString());
-  const [time, setTime] = useState(data? data.time: new Date().toLocaleTimeString());
-  const [color, setColor] = useState(data? data.color: "#5545a3");
-  const [city, setCity] = useState(data? data.city: '');
+  const [title, setTitle] = useState(data ? data.title : "");
+  const [date, setDate] = useState(
+    data ? data.date : new Date().toLocaleDateString()
+  );
+  const [time, setTime] = useState(
+    data ? data.time : new Date().toLocaleTimeString()
+  );
+  const [color, setColor] = useState(data ? data.color : "#5545a3");
+  const [city, setCity] = useState(data ? data.city : "");
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
   const [count, setCount] = useState(0);
-  const [id] = useState(data? data.id: getId);
-
+  const [id] = useState(data ? data.id : getId);
 
   const onSubmit = e => {
     e.preventDefault();
-    if(title.length === 0){
-        alert("Please fill the title");
-        return;
+    if (title.length === 0 || city.length === 0) {
+      alert("Please fill the information");
+      return;
     }
     let reminder = {
       title,
@@ -56,14 +57,14 @@ const ModalUI = ({
     }
   };
 
-  const onDelete = (e) =>{
-    e.preventDefault()
+  const onDelete = e => {
+    e.preventDefault();
     setOpen(false);
     removeReminder({
       id: id
     });
-  }
- 
+  };
+
   const fetchingWeather = data => {
     setCity(data);
     setWeather({
@@ -81,13 +82,17 @@ const ModalUI = ({
       <Modal.Header>
         <div className={styles.header}>
           <div>Reminder</div>
-          {edit? <button className={styles.buttonDelete} onClick={onDelete}>Delete</button>: null}
+          {edit ? (
+            <button className={styles.buttonDelete} onClick={onDelete}>
+              Delete
+            </button>
+          ) : null}
         </div>
       </Modal.Header>
       <Modal.Content>
         <Modal.Description>
-          <form style={{display: "flex"}}>
-            <div style={{flex: 3}}>
+          <form style={{ display: "flex" }}>
+            <div style={{ flex: 3 }}>
               <div className={styles.container}>
                 <div className={styles.titleBox}>
                   <div className={styles.title}>Title</div>
@@ -175,13 +180,20 @@ const ModalUI = ({
                 )}
               </div>
               <div className={styles.boxButton}>
-                <button className={styles.buttonSuccess} type="submit" onClick={onSubmit} id="submitBtn">
-                  {edit? "Update": "Create"}
+                <button
+                  className={styles.buttonSuccess}
+                  type="submit"
+                  onClick={onSubmit}
+                  id="submitBtn"
+                >
+                  {edit ? "Update" : "Create"}
                 </button>
               </div>
             </div>
-            <div style={{flex:1}}>
-              {weather ? <WeatherInformation {...weather}></WeatherInformation> : null}
+            <div style={{ flex: 1 }}>
+              {weather ? (
+                <WeatherInformation {...weather}></WeatherInformation>
+              ) : null}
             </div>
           </form>
         </Modal.Description>

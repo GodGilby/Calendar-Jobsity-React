@@ -16,15 +16,15 @@ export const CITIES = [
         name: "London"
     },
     {
-        id: 3,
+        id: 5,
         name: "Madrid"
     },
     {
-        id: 3,
+        id: 6,
         name: "Paris"
     },
     {
-        id: 3,
+        id: 7,
         name: "Berlin"
     }
 ]
